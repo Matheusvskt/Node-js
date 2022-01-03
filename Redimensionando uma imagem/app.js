@@ -1,12 +1,14 @@
 const sharp = require('sharp')
+const compress_images = require('compress-images');
+
 let path = process.argv[2];
 let width = Number(process.argv[3]);
 
 console.log(path, width)
 
-function resize(path, width){
+function resize(inputPath, outPutPath, width){
 
-sharp(path).resize({width: width}).toFile('./temps/output_resize.jpg',(erro)=>{
+sharp(inputPath).resize({width: width}).toFile( outPutPath,(erro)=>{
     if(erro){
         console.log(erro);
     }else{
@@ -15,5 +17,7 @@ sharp(path).resize({width: width}).toFile('./temps/output_resize.jpg',(erro)=>{
 })
 
 }
+function compress(pathInput, outPutPath){
 
-resize(path, width);
+}
+resize(path,'./temps/output_resize.jpg', width);
